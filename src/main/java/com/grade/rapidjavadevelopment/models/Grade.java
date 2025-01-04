@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "grades")
 @AllArgsConstructor
@@ -26,6 +28,12 @@ public class Grade {
     @JoinColumn(name = "course_id")
     private Course course;
 
-    private double grade;
+    @Column(nullable = false)
+    private Double grade;
 
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 }

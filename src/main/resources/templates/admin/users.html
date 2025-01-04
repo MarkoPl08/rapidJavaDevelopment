@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{admin.title}">User Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+<div class="float-right mb-3">
+    <a href="?lang=en" class="btn btn-sm btn-link">English</a> |
+    <a href="?lang=de" class="btn btn-sm btn-link">Deutsch</a> |
+    <a href="?lang=zh" class="btn btn-sm btn-link">中文</a>
+</div>
+
+<h1 th:text="#{admin.title}">User Management</h1>
+
+<div th:if="${users.empty}" class="alert alert-info" th:text="#{admin.users.empty}">
+    No users available.
+</div>
+
+<table th:if="${!users.empty}" class="table table-striped">
+    <thead>
+    <tr>
+        <th th:text="#{auth.username}">Username</th>
+        <th th:text="#{auth.email}">Email</th>
+        <th th:text="#{admin.user.role}">Role</th>
+        <th th:text="#{courses.actions}">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.role}"></td>
+        <td>
+            <a th:href="@{/admin/users/edit/{id}(id=${user.id})}"
+               class="btn btn-sm btn-warning" th:text="#{btn.edit}">Edit</a>
+            <form th:action="@{/admin/users/delete/{id}(id=${user.id})}"
+                  method="post" style="display: inline;">
+                <button type="submit" class="btn btn-sm btn-danger"
+                        th:onclick="'return confirm(\'' + #{admin.user.delete.confirm} + '\')'"
+                        th:text="#{btn.delete}">Delete
+                </button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/}" class="btn btn-secondary" th:text="#{btn.back}">Back to Dashboard</a>
+</body>
+</html>

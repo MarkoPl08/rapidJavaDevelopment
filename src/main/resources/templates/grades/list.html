@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{grades.title}">Course Grades</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+<div class="float-right mb-3">
+    <a href="?lang=en" class="btn btn-sm btn-link">English</a> |
+    <a href="?lang=de" class="btn btn-sm btn-link">Deutsch</a> |
+    <a href="?lang=zh" class="btn btn-sm btn-link">中文</a>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title" th:text="${course.courseName}">Course Name</h5>
+        <p class="card-text" th:text="${course.courseCode}">Course Code</p>
+    </div>
+</div>
+
+<h1>
+    <span th:text="${course.courseName}"></span> - <span th:text="#{grades.title}"></span>
+</h1>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title" th:text="#{grades.course.gpa}">Course GPA</h5>
+        <p class="card-text" th:text="${#numbers.formatDecimal(courseGPA, 1, 2)}">0.00</p>
+    </div>
+</div>
+
+<a th:href="@{/courses/{id}/grades/add(id=${course.id})}" class="btn btn-primary mb-3" th:text="#{grades.new}">Add
+    Grade</a>
+
+<div th:if="${grades.empty}" class="alert alert-info" th:text="#{grades.none}">
+    No grades available for this course.
+</div>
+
+<table th:if="${!grades.empty}" class="table table-striped">
+    <thead>
+    <tr>
+        <th th:text="#{grades.value}">Grade</th>
+        <th th:text="#{grades.date.added}">Date Added</th>
+        <th th:text="#{courses.actions}">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="grade : ${grades}">
+        <td th:text="${grade.grade}"></td>
+        <td th:text="${#temporals.format(grade.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+        <td>
+            <form th:action="@{/courses/{courseId}/grades/delete/{gradeId}(courseId=${course.id},gradeId=${grade.id})}"
+                  method="post" style="display: inline;">
+                <button type="submit" class="btn btn-sm btn-danger"
+                        th:onclick="'return confirm(\'' + #{grades.delete.confirm} + '\')'"
+                        th:text="#{btn.delete}">Delete
+                </button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/courses}" class="btn btn-secondary" th:text="#{btn.back}">Back to Courses</a>
+</body>
+</html>

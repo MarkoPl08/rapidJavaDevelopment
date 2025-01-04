@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:text="#{courses.title}">Courses</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+<div class="float-right mb-3">
+    <a href="?lang=en" class="btn btn-sm btn-link">English</a> |
+    <a href="?lang=de" class="btn btn-sm btn-link">Deutsch</a> |
+    <a href="?lang=zh" class="btn btn-sm btn-link">中文</a>
+</div>
+
+<h1 th:text="#{courses.title}">Courses</h1>
+
+<div sec:authorize="hasRole('ROLE_ADMIN')" class="mb-3">
+    <a th:href="@{/admin/users}" class="btn btn-primary" th:text="#{btn.user.management}">User Management</a>
+</div>
+
+<a th:href="@{/courses/create}" class="btn btn-primary mb-3" th:text="#{courses.new}">Add New Course</a>
+
+<div th:if="${courses.empty}" class="alert alert-info" th:text="#{courses.empty}">
+    No courses available.
+</div>
+
+<table th:if="${!courses.empty}" class="table table-striped">
+    <thead>
+    <tr>
+        <th th:text="#{courses.code}">Course Code</th>
+        <th th:text="#{courses.name}">Course Name</th>
+        <th th:text="#{courses.credits}">Credits</th>
+        <th th:text="#{courses.actions}">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="course : ${courses}">
+        <td th:text="${course.courseCode}"></td>
+        <td th:text="${course.courseName}"></td>
+        <td th:text="${course.credits}"></td>
+        <td>
+            <a th:href="@{/courses/edit/{id}(id=${course.id})}"
+               class="btn btn-sm btn-warning" th:text="#{btn.edit}">Edit</a>
+            <a th:href="@{/courses/{id}/grades(id=${course.id})}"
+               class="btn btn-sm btn-primary" th:text="#{btn.view}">View Grades</a>
+            <form th:action="@{/courses/delete/{id}(id=${course.id})}" method="post" style="display: inline;">
+                <button type="submit" class="btn btn-sm btn-danger"
+                        th:onclick="'return confirm(\'' + #{courses.delete.confirm} + '\')'"
+                        th:text="#{btn.delete}">Delete
+                </button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/}" class="btn btn-secondary" th:text="#{btn.back}">Back to Dashboard</a>
+</body>
+</html>

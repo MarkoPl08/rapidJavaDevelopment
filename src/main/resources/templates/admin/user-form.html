@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{admin.edit.user}">Edit User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+<div class="float-right mb-3">
+    <a href="?lang=en" class="btn btn-sm btn-link">English</a> |
+    <a href="?lang=de" class="btn btn-sm btn-link">Deutsch</a> |
+    <a href="?lang=zh" class="btn btn-sm btn-link">中文</a>
+</div>
+
+<h1 th:text="#{admin.edit.user}">Edit User</h1>
+
+<form th:action="@{/admin/users/edit/{id}(id=${user.id})}" th:object="${user}" method="post">
+    <div class="form-group">
+        <label th:text="#{auth.username}">Username:</label>
+        <input type="text" th:field="*{username}" class="form-control" required/>
+    </div>
+
+    <div class="form-group">
+        <label th:text="#{auth.email}">Email:</label>
+        <input type="email" th:field="*{email}" class="form-control" required/>
+    </div>
+
+    <button type="submit" class="btn btn-primary" th:text="#{btn.save}">Save</button>
+    <a th:href="@{/admin/users}" class="btn btn-secondary" th:text="#{btn.cancel}">Cancel</a>
+</form>
+</body>
+</html>
