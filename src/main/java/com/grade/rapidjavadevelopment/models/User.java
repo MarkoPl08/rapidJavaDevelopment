@@ -1,5 +1,6 @@
 package com.grade.rapidjavadevelopment.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +16,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties({"courses"})
 public class User {
 
     @Id
@@ -29,12 +31,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_courses",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "course_id")
-    )
+    @ManyToMany(mappedBy = "students")
     private Set<Course> courses = new HashSet<>();
 }
-

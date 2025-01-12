@@ -101,4 +101,8 @@ public class GradeService {
                 .average()
                 .orElse(0.0);
     }
+
+    public List<Grade> getGradesByCourse(Course course) {
+        return gradeRepository.findByCourse(course);
+    }
 }

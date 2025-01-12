@@ -1,6 +1,7 @@
 package com.grade.rapidjavadevelopment.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +17,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties({"grades"})
 public class Course {
 
     @Id
@@ -26,7 +28,13 @@ public class Course {
     private String courseCode;
     private int credits;
 
-    @ManyToMany(mappedBy = "courses")
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "user_courses",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private Set<User> students = new HashSet<>();
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
