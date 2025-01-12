@@ -1,7 +1,7 @@
-package com.grade.rapidjavadevelopment.mvc.controllers;
+package com.grade.rapidjavadevelopment.controllers;
 
 import com.grade.rapidjavadevelopment.models.User;
-import com.grade.rapidjavadevelopment.mvc.services.UserService;
+import com.grade.rapidjavadevelopment.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

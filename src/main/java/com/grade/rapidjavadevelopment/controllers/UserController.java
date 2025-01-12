@@ -1,10 +1,9 @@
-package com.grade.rapidjavadevelopment.mvc.controllers;
+package com.grade.rapidjavadevelopment.controllers;
 
 import com.grade.rapidjavadevelopment.models.Role;
 import com.grade.rapidjavadevelopment.models.User;
-import com.grade.rapidjavadevelopment.mvc.services.UserService;
+import com.grade.rapidjavadevelopment.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

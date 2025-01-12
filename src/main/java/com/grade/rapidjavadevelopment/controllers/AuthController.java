@@ -1,9 +1,10 @@
-package com.grade.rapidjavadevelopment.mvc.controllers;
+package com.grade.rapidjavadevelopment.controllers;
 
 import com.grade.rapidjavadevelopment.models.AuthRequest;
 import com.grade.rapidjavadevelopment.models.AuthResponse;
-import com.grade.rapidjavadevelopment.mvc.services.CustomUserDetailsService;
+import com.grade.rapidjavadevelopment.services.CustomUserDetailsService;
 import com.grade.rapidjavadevelopment.utils.JwtUtil;
+import jakarta.validation.Valid;
 import lombok.Data;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,7 +33,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthRequest authRequest) {
+    public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody AuthRequest authRequest) {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(

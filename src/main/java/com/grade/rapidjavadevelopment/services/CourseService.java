@@ -1,8 +1,9 @@
-package com.grade.rapidjavadevelopment.mvc.services;
+package com.grade.rapidjavadevelopment.services;
 
 import com.grade.rapidjavadevelopment.models.Course;
 import com.grade.rapidjavadevelopment.models.User;
-import com.grade.rapidjavadevelopment.mvc.repositories.CourseRepository;
+import com.grade.rapidjavadevelopment.repositories.CourseRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +24,12 @@ public class CourseService {
                 .orElseThrow(() -> new RuntimeException("Course not found"));
     }
 
+    @Transactional
     public Course saveCourse(Course course) {
         return courseRepository.save(course);
     }
 
+    @Transactional
     public Course saveCourse(Course course, User user) {
         if (!course.getStudents().contains(user)) {
             course.getStudents().add(user);

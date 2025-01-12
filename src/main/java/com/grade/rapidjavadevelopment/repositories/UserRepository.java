@@ -1,4 +1,4 @@
-package com.grade.rapidjavadevelopment.mvc.repositories;
+package com.grade.rapidjavadevelopment.repositories;
 
 import com.grade.rapidjavadevelopment.models.Role;
 import com.grade.rapidjavadevelopment.models.User;

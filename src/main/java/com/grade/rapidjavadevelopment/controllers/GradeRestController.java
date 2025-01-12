@@ -1,11 +1,11 @@
-package com.grade.rapidjavadevelopment.mvc.controllers;
+package com.grade.rapidjavadevelopment.controllers;
 
 import com.grade.rapidjavadevelopment.models.Course;
 import com.grade.rapidjavadevelopment.models.Grade;
 import com.grade.rapidjavadevelopment.models.User;
-import com.grade.rapidjavadevelopment.mvc.services.CourseService;
-import com.grade.rapidjavadevelopment.mvc.services.GradeService;
-import com.grade.rapidjavadevelopment.mvc.services.UserService;
+import com.grade.rapidjavadevelopment.services.CourseService;
+import com.grade.rapidjavadevelopment.services.GradeService;
+import com.grade.rapidjavadevelopment.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

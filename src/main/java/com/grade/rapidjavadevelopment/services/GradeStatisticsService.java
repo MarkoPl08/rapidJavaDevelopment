@@ -1,4 +1,4 @@
-package com.grade.rapidjavadevelopment.mvc.services;
+package com.grade.rapidjavadevelopment.services;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
-package com.grade.rapidjavadevelopment.mvc.services;
+package com.grade.rapidjavadevelopment.services;
 
 import com.grade.rapidjavadevelopment.models.Course;
 import com.grade.rapidjavadevelopment.models.Grade;
 import com.grade.rapidjavadevelopment.models.User;
-import com.grade.rapidjavadevelopment.mvc.repositories.GradeRepository;
+import com.grade.rapidjavadevelopment.repositories.GradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

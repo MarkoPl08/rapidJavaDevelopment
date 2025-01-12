@@ -1,7 +1,7 @@
 package com.grade.rapidjavadevelopment.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.grade.rapidjavadevelopment.mvc.services.CustomUserDetailsService;
+import com.grade.rapidjavadevelopment.services.CustomUserDetailsService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

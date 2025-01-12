@@ -1,4 +1,4 @@
-package com.grade.rapidjavadevelopment.mvc.controllers;
+package com.grade.rapidjavadevelopment.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

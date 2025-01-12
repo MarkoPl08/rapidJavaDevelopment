@@ -1,8 +1,8 @@
-package com.grade.rapidjavadevelopment.mvc.services;
+package com.grade.rapidjavadevelopment.services;
 
 import com.grade.rapidjavadevelopment.models.Role;
 import com.grade.rapidjavadevelopment.models.User;
-import com.grade.rapidjavadevelopment.mvc.repositories.UserRepository;
+import com.grade.rapidjavadevelopment.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,9 @@ public class UserService {
         if (user.getRole() == null) {
             user.setRole(Role.ROLE_USER);
         }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        if (user.getPassword() != null) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
         return userRepository.save(user);
     }
 

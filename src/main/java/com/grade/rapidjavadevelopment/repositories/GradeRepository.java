@@ -1,4 +1,4 @@
-package com.grade.rapidjavadevelopment.mvc.repositories;
+package com.grade.rapidjavadevelopment.repositories;
 
 import com.grade.rapidjavadevelopment.models.Course;
 import com.grade.rapidjavadevelopment.models.Grade;

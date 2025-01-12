@@ -1,7 +1,7 @@
-package com.grade.rapidjavadevelopment.mvc.services;
+package com.grade.rapidjavadevelopment.services;
 
 import com.grade.rapidjavadevelopment.models.User;
-import com.grade.rapidjavadevelopment.mvc.repositories.UserRepository;
+import com.grade.rapidjavadevelopment.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
